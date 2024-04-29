@@ -1,0 +1,44 @@
+package main
+
+import "fmt"
+
+func minNumb(numbers []int) int {
+	minN := numbers[0]
+	for _, n := range numbers {
+		if minN > n {
+			minN = n
+		}
+	}
+	return minN
+}
+
+func Divisors(numbers []int) (comDivisors []int) {
+	minN := minNumb(numbers)
+
+	comDivisors = []int{}
+
+	//1 пропускаю т.к. 1 делитель для любого числа
+	for i := 2; i <= minN; i++ {
+		isComDivisor := true
+		for _, n := range numbers {
+			if n%i != 0 {
+				isComDivisor = false
+				break
+			}
+		}
+
+		if isComDivisor {
+			comDivisors = append(comDivisors, i)
+		}
+	}
+
+	return
+}
+func main() {
+	a := []int{42, 12, 18}
+	fmt.Println("Общие делители:", Divisors(a))
+	b := []int{42, 12, 18, 24, 32, 54}
+	fmt.Println("Общие делители:", Divisors(b))
+	c := []int{21, 44, 55, 66, 77, 88}
+	fmt.Println("Общие делители:", Divisors(c))
+}
