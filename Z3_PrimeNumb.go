@@ -1,3 +1,4 @@
+//go lang
 package main
 
 import (
